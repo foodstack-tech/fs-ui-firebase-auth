@@ -1,0 +1,29 @@
+{
+  "name": "fs-ui-firebase-auth",
+  "authors": [
+    "Eduardo Echeverria <eduardo@foodstack.mx>",
+    "Sunny Wong <sunny@foodstack.mx>",
+    "Foodstack <tech@foodstack.mx>"
+  ],
+  "description": "",
+  "main": "fs-ui-firebase-auth.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2",
+    "polymerfire": "firebase/polymerfire#^0.9.0"
+  },
+  "keywords": [
+    "foodstack",
+    "firebase",
+    "authentication",
+    "polymer",
+    "javascript"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,56 @@
+<link rel="import" href="../bower_components/polymer/polymer.html"/>
+<link rel="import" href="../bower_components/polymerfire/firebase-auth.html"/>
+<dom-module id="fs-firebase-auth">
+  <template>
+    <firebase-auth id="firebaseAuth" user="{{user}}" provider="password" on-error="erroHandler"></firebase-auth>
+    
+    firebase auth
+    <div>{{user}}</div>
+  </template>
+</dom-module>
+<script>
+  /*global Polymer*/
+  var testEmail = 'eduardo@foodstack.mx';
+  var testPassword = 'nowaydude';
+  
+  Polymer({
+    is: 'fs-firebase-auth',
+
+    properties: {
+      user: {
+        type: Object,
+        value: null
+      }
+    },
+    errorHandler: function(e) {
+        console.log('Error: ' + e.detail.message);
+    },
+    createUser: function() {
+    //    this.$.firebaseAuth
+    //      .createUserWithEmailAndPassword(testEmail, testPassword)
+    //      .then(function(e) {console.log(e);console.log('created');});
+    },
+    signIn: function(email, password) {
+      var that = this;
+      
+      //debugger;
+      //var a = this.$.firebaseAuth
+      //  .signInWithEmailAndPassword(email, password);
+      //console.log(a);
+      
+      this.$.firebaseAuth
+        .signInWithEmailAndPassword(email, password)
+        .then(function(a, b, c){ that.onSignIn(); })
+        .catch(function (error, b) { that.onError(error); });
+    },
+    signInTapped: function() {
+      this.signIn(testEmail, testPassword);
+    },
+    onSignIn: function() {
+      console.log('Signed in ' + this.user.uid);
+    },
+    onError: function(error) {
+      console.log('Authentication error: ' + error.code + ' :: ' + error.message);
+    }
+  });
+</script>
